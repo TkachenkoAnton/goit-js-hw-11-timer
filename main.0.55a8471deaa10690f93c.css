@@ -1,0 +1,1 @@
+.timer{font-size:50px}.field,.timer{display:flex;flex-wrap:wrap;justify-content:center}.field{width:120px}.field:not(:last-child){margin-right:60px}.value{background-color:plum}.label{margin-top:20px}
