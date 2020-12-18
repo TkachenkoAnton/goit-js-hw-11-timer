@@ -1,12 +1,11 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const WebpackBar = require('webpackbar');
-const paths = require('../utils/paths');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const WebpackBar = require("webpackbar");
+const paths = require("../utils/paths");
 
-module.exports = env => ({
+module.exports = (env) => ({
   mode: env.mode,
   context: paths.SRC_DIR,
-  entry: './index.js',
+  entry: "./index.js",
   output: {
     path: paths.BUILD_DIR,
   },
@@ -15,32 +14,32 @@ module.exports = env => ({
       {
         test: /\.js$/,
         include: paths.SRC_DIR,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
-              name: '[path][name].[ext]',
+              name: "[path][name].[ext]",
               limit: 8192,
               esModule: false,
             },
           },
-          'img-loader',
+          "img-loader",
         ],
       },
       {
         test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/',
+              name: "[name].[ext]",
+              outputPath: "fonts/",
               limit: 10000,
-              mimetype: 'application/font-woff',
+              mimetype: "application/font-woff",
             },
           },
         ],
@@ -49,27 +48,23 @@ module.exports = env => ({
         test: /\.(ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/',
+              name: "[name].[ext]",
+              outputPath: "fonts/",
             },
           },
         ],
       },
       {
         test: /\.html$/,
-        use: 'html-loader',
+        use: "html-loader",
       },
       {
         test: /\.hbs$/,
-        use: 'handlebars-loader',
+        use: "handlebars-loader",
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new FriendlyErrorsWebpackPlugin(),
-    new WebpackBar(),
-  ],
+  plugins: [new CleanWebpackPlugin(), new WebpackBar()],
 });
