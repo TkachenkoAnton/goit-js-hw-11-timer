@@ -14,6 +14,7 @@ class CountdownTimer {
     this.secs = document.querySelector(
       `${this.selector} span[data-value="secs"]`
     );
+    this.start();
   }
 
   timerUpdate(time) {
@@ -39,7 +40,7 @@ class CountdownTimer {
     this.secs.textContent = secs;
   }
 
-  interval() {
+  start() {
     setInterval(() => {
       const delta = this.targetDate - Date.now();
       this.timerUpdate(delta);
@@ -49,7 +50,5 @@ class CountdownTimer {
 
 const timer = new CountdownTimer({
   selector: "#timer-1",
-  targetDate: new Date("Jan 17, 2021"),
+  targetDate: new Date("Jan 01, 2021"),
 });
-
-timer.interval();
